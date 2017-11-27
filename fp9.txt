@@ -1,0 +1,57 @@
+Project Name: Political Advertisements During the 2015-2016 Election Cycle
+Names: Tom Lucy and Duncan Gans
+Date: 11/13/17
+
+FP9: Notes from in-class pilot studies
+
+Dataset Overview: Data on advertisements ran for US House, US Senate, and
+Presidential races between 2015-2016.
+
+1. The Line Graph
+   - This visualization shows how total cost spent on advertisements changes
+   over time in 2015-2016. Generally a line graph could answer the following
+   questions: how did spending change over time?; which periods saw the most
+   spending? which events in the election cycle corresponded with higher
+   levels of spending? Found here:
+   http://www.bowdoin.edu/~tlucy/csci3665/FinalProject/fp6/lineGraph.html
+   - Observations:
+     - Brush and Zoom would be good interactivity to show more specific time
+     periods 
+     - sort by US House, US Senate, and Presidential races - different line
+     for each (stacked area)
+     - sort by Republicans and Democrats
+     - put in line for dates of primaries/primary season
+
+2. The Sankey Diagram
+   - This visualization shows total ads, number of democrat vs republican ads
+   vs other ads, and then how many from each party were positive, negative,
+   and contrasting in tone. Attempts to answer: How do the parties compare in
+   the tone of ads? Found here:
+   http://www.bowdoin.edu/~tlucy/csci3665/FinalProject/fp6/sankey.html
+   - Observations:
+     - Add tooltips with percent of previous layer for links
+     - Add a layer after party for 'Issues'
+     - 3d drop down to choose layers?
+
+3. The Chloropleth
+   - This visualization shows tone of ads by state (more negative are more
+   red). Possible interactions are: showing cost, station, etc instead of
+   tone and animating to show changes over time. Attempts to answer: Which
+   states see more negative ads? Which can lead to a more educated discusiion
+   of why. Found here:
+   http://www.bowdoin.edu/~tlucy/csci3665/FinalProject/fp6/chl.html
+   - Observations:
+     - Add legend and animation
+     - Add more distinct lines to the map to differentiate states
+     - Add state's names to the map as labels
+
+4. The Bar Graph
+   - This visualization shows total cost over the time period by issue, with
+   envisioned interactivity to show by party, station, or type of
+   race. Attempts to answer: Which issues are worth more money to campaigns,
+   and which issues are worth more money to parties? Found here:
+   http://www.bowdoin.edu/~tlucy/csci3665/FinalProject/fp6/bg.html
+   - Observations:
+     - Stack the bars to show each party
+     - Have the color reflect the party
+     - Run side by side with chloropleth in an animation

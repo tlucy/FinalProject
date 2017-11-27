@@ -1,0 +1,12 @@
+source,target,number
+All Ads,Democrats,140760
+All Ads,Republicans,162322
+All Ads,Other,216
+Democrats,Democrats Negative,6790
+Democrats,Democrats Positive,132542
+Democrats,Democrats Contrast,1428
+Republicans,Republicans Negative,22972
+Republicans,Republicans Positive,111455
+Republicans,Republicans Contrast,27895
+Other,Other Negative,154
+Other,Other Positive,62

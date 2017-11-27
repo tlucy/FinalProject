@@ -1,0 +1,33 @@
+Duncan Gans, Tom Lucy
+fp11: Define Your Goals
+Interactive Data Visualization
+11/20/2017
+
+Political Advertisements During the 2015-2016 Election Cycle
+FP11-1: Final Project Progress Report - 1
+
+Our goals for this week were to finish all of the Final Project Assignments, 
+FP4-FP11. These have now all been submitted (except for fp11, which is this 
+very document.) Because we have not gotten an official approval of our project
+we have not yet started working on the actual code. 
+
+In FP10 we outlined our goals for the project, as well as our week by week
+goals. So, we feel like these week by week goals are very manageable and 
+because the week of November 20th hasn't started yet, there is not a lot
+to write about in this document. We met with our collaborator, and he was
+very optimistic. This can be seen in fp7. We haven't ran into any new questions
+or problems that we didn't voice in the previous Final Project documents we
+submitted earlier today. 
+
+Our most immediate goals for the next week are to get a minimally functional
+layout for our visualization. This will include the two graphs (the 
+chloropleth and the bar graph) as well as space for the future interactivity.
+Additionally, we will begin pre-processing data to make it amenable to the 
+time scrolling interactivity. 
+
+Also, according to the assignment this should be two pages, but we are unsure
+what to write about for this first progress report. To add more information 
+would be to simply copy and paste it from other documents, especially FP10. 
+If you want us to do more, let us know. An updated contributions account is in
+the project directory. 
+

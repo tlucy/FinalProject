@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" >
+      <head>
+        <title>FP8: Describe your Data</title>
+      </head>
+      <body>
+        <h1>FP8: Describe your Data</h1>
+        <h5>By Tom Lucy and Duncan Gans, 11/17/17</h5>
+        <p>Project Name: Political Advertisements in the 2015-2016 Election
+        Cycle</p>
+        <p>The dataset we are using for this project was obtained from
+        Government & Legal Studies Professor Michael Franz. The initial
+        dataset contained information on all political ads, at both the state
+        and federal levels, in the years 2015-2016. For our project, we will
+        be focusing on solely US Senate, US House, and Presidential races -
+        excluding ads for justice and gubernatorial races. In this subset of
+        the data, there are about 303298 examples and 23 attributes.</p>
+        <p>Of the attributes that we are including, 6 are real values  and the
+        other 17 are catergorical. Rather than encoding categorical
+        attributes, we are aggregating the data in the ways that we want to
+        use it. Since our questions and visualizationts care more about
+        trends in ads across time, we are much more interested in how many
+        ads were run for US Senate races than the specifics of any particular
+        US Senate ad.</p>
+        <br>
+	These are the attributes in the dataset:
+	<br>
+	<ol>
+	  <li>L: Length of the political ad in seconds [real values]</li>
+	  <li>MARKET: The media market of the country in which the ad was run
+            (e.g. Houston, Salt Lake, etc) [categorical]</li>
+	  <li>DISTRICT: The political district in which the race is occuring
+            (e.g Mississippi 1st) [categorical]</li>
+	  <li>MEDIA: Type of media on which the ad was run (e.g. Spot TV)
+	    [categorical]</li>
+	  <li>AIRDATE: Date that the ad was run (1/1/15 - 12/31/16) [real
+	    values]</li>
+	  <li>AIRTIME: Time of day that the ad was run (00:00:00 - 23:59:59)
+            [real values]</li>
+	  <li>DAY: General time of day that the ad was run, based off the time
+	    [categorical]</li>
+	  <li>PART: Genre of the channel on which the ad was run
+	    [categorical]</li>
+	  <li>STATION: Channel on which the ad was run [categorical]</li>
+	  <li>AFFILIATE: Large, national station with which the station that
+            ran the ad is affiliated [categorical]</li>
+	  <li>PROGRAM: Name of the program during which that ad was run
+	    [categorical]</li>
+	  <li>PROGRAMTYPE: Genre of the program during which the ad was run
+	    [categorical]</li>
+	  <li>EST. COST: Estimated cost to run the ad (not to create the ad)
+            [real values]</li>
+	  <li>ADTYPE: General type of ad (e.g. election, referendum, etc)
+	  [categorical]</li>
+	  <li>AFFILIATION: Party affiliated with the creator/sponsor of the ad
+	    [categorical]</li>
+	  <li>ELECTION: Election type of the ad that is being run
+            (e.g. General) [categorical]</li>
+	  <li>ISSUE: Issues on which the ad is focused (e.g. Veterans, Taxes,
+            etc) [categorical]</li>
+	  <li>LEVEL: Level of the race for which the ad was made (e.g. local,
+            national, etc) [categorical]</li>
+	  <li>RACE: Race that the ad was for (e.g. US House, US Senate, etc)
+	    [categorical]</li>
+	  <li>TONE: General tone of the ad (e.g. Positive, Contrast, Negative)
+	    [categorical]</li>
+	  <li>YEAR: Year in which the ad was made [real values]</li>
+	  <li>NIELSENMAID: Number of the nielsen area in which the ad was
+            run [real values]</li>
+	  <li>MARKET-STATE: A more general categorization of the market in
+            which the ad was run, by state [categorical]</li>
+	</ol>
+	<p>Although we have inclduded all of the attributes at this point, not
+          all will be used. The most important attributes to us are RACE,
+          EST. COST, ISSUE, TONE, and DATE, although other attributes may be
+          incorporated if they are deemed applicable to the questions that we
+          are trying to answer.</p>
+        Below are a couple lines of sample data, with the column headers
+        above:
+        <br>
+        <br>
+        L,MARKET,DISTRICT,MEDIA,AIRDATE,AIRTIME,DAY,PART,STATION,AFFILIATE,PROGRAM,PROGRAMTYPE,EST.COST,ADTYPE,AFFILIATION,ELECTION,ISSUE,LEVEL,RACE,TONE,YEAR,NIELSENDMAID,MARKET-STATE
+        <br>
+        30,BOSTON,N/A,Spot TV,10/8/15,22:22:25,LATE,NEWS,WBININD,NH1 NEWS,
+        TONIGHTNEWSCAST (LOCAL
+        ONLY),420,ISSUE-ELECTION,REPUBLICAN,GENERAL,CALL
+        TO ACTION|SOCIAL ISSUES|HEALTHCARE|SOCIAL ISSUES:  BIRTH
+        CONTROL,FEDERAL,US SENATE,POSITIVE,2016,506,MA
+        <br>
+        30,BOSTON,N/A,Spot TV,10/9/15,0:28:33,LATE, FRINGE,WBININD,NH1 NEWS,
+        TONIGHTNEWSCAST (LOCAL ONLY),50,ISSUE-ELECTION,REPUBLICAN,GENERAL,CALL
+        TO ACTION|SOCIAL ISSUES|HEALTHCARE|SOCIAL ISSUES:  BIRTH
+        CONTROL,FEDERAL,US SENATE,POSITIVE,2016,506,MA
+	<br><br>
+      </body>
+</html>
+

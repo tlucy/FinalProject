@@ -1,0 +1,24 @@
+Project Name: Political Advertisements During the 2015-2016 Election Cycle
+Names: Tom Lucy and Duncan Gans
+Date: 11/17/17
+
+FP7: Notes from your collaborator
+
+Dataset Overview: Data on advertisements ran for US House, US Senate, and
+Presidential races between 2015-2016.
+
+1. Thoughts on Current Plan
+   - Was very into it. He liked that this would allow you to see two different sects of data at the same time. He was also pleasantly surprised that we'd be able to change what we were showing on both
+   the bar graph and the chloropleth.
+   - As a whole very much liked our idea.
+
+
+2. Suggestions
+   - Thought it was possible we might be missing some data towards the end
+   of the election. He knows it should decrease, but not as much as a line
+   graph we showed him implied.
+   - Recommended that something we could track is the kind of programs
+   that run political ads. Obviously for the most part it’s just news 
+   programs, but it could be neat to see whether certain states or parties political ads are more frequently run on certain types of programs.
+   - Recommended that the way we track issues should be tweaked a little. At the moment we weight every ad that airs an issue the same,
+   i.e. that a political ad about abortion, taxes, and the environment counts the same as a political ad just about abortion, as far as the abortion column goes. This we should change by factoring in the total amount of topics discussed in the ad.

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Political Advertisements During the 2015-2016 Election Cycle</title>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="proj.css"></link>
+</head>
+<body>
+
+  <div id="header">
+    <h1>Political Advertisements in the 2015-2016 Election Cycle</h1>
+  </div>
+
+  <div id="nav">
+    <h3 id="navText">Navigation</h3>
+  </div>
+
+  <div class="wrapper">
+    <img class="left" id="animate" src="play_button.png" 
+	 width="30" height="30" >
+    <div id="slidecontainer" class="left">
+      <input type="range" min="15" max="22" value="15" 
+	     class="slider" id="myRange">
+    </div>
+    <p id="date" class="left">January 2015</p>
+  </div>
+
+  <script type="text/javascript" src="proj.js"> </script>
+
+  <select id="controlsCHL">
+    <option>Group by Issue</option>
+    <option>Group by Channel</option>
+    <option>Group by Party</option>
+    <option>Group by State</option>
+    <option>Group by Race</option>
+  </select>
+
+  <select id="controlsBG">
+    <option>Group by Issue</option>
+    <option>Group by Channel</option>
+    <option>Group by Party</option>
+    <option>Group by State</option>
+    <option>Group by Race</option>
+  </select>
+
+</body>
