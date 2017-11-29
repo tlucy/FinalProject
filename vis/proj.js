@@ -85,7 +85,7 @@ function makeAndLabelBars () {
 		Math.round(parseInt(d.value) * redScaling) + ", 0, 0)";
 	});
     */
-	.attr("fill", "dodgerblue");
+	.attr("fill", "#e9e7da");
 }
 
 
@@ -123,7 +123,8 @@ function makeSVG (id) {
 	    .append("svg")
 	    .attr("id", id)
 	    .attr("width", myNS.wBG)
-	    .attr("height", myNS.hBG);
+	    .attr("height", myNS.hBG)
+	    .attr("onmouseover", "putAway();");
 	
 	return svg
     }
@@ -132,7 +133,8 @@ function makeSVG (id) {
 	    .append("svg")
 	    .attr("id", id)
 	    .attr("width", myNS.wCHL)
-	    .attr("height", myNS.hCHL);
+	    .attr("height", myNS.hCHL)
+	    .attr("onmouseover", "putAway();");
 	
 	return svg;
     } 
@@ -162,7 +164,7 @@ function makeHelpers() {
 	.projection(myNS.projection);
     
     myNS.color = d3.scaleLinear()
-	.range(["black", "dodgerblue"]);
+	.range(["#373f27", "#e9e7da"]);
 }
 
 
@@ -197,7 +199,7 @@ function makeLegend() {
     var colorScaleLin = d3.scaleLinear()
         .domain([0, newData.length-1])
         .interpolate(d3.interpolateLab)
-        .range(["black", "dodgerblue"]);
+        .range(["#373f27", "#e9e7da"]);
     
     legend.selectAll('rect')
         .data(newData)
@@ -261,7 +263,7 @@ function makeMap() {
 		    return "#ccc";
 		}
 	    })
-	    .style("stroke", "#f9fbfb");
+	    .style("stroke", "#cda34f");
     });
 }
 
@@ -283,3 +285,24 @@ d3.csv(myNS.BG, function(error, data) {
       })
     }
 });
+
+
+// allows for drop down menu
+
+function dropDown() {
+    
+    var info = document.getElementById("dropDown");
+
+    if (info.style.visibility == "hidden") {
+	info.style.visibility = "visible";
+    }
+}
+
+function putAway() {
+ 
+    var info = document.getElementById("dropDown");
+    
+    if (info.style.visibility == "visible") {
+	info.style.visibility = "hidden";
+    }
+}

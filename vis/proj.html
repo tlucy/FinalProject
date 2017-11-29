@@ -8,15 +8,23 @@
 </head>
 <body>
 
-  <div id="header">
+  <div id="header" onmouseover="putAway();">
     <h1>Political Advertisements in the 2015-2016 Election Cycle</h1>
   </div>
 
-  <div id="nav">
+  
+  <div id="nav" onmouseover="dropDown();">
     <h3 id="navText">Navigation</h3>
   </div>
 
-  <div class="wrapper">
+  <div id="dropDown" style="visibility: hidden">
+    <a href="home.html"><h5>Home</h5></a>
+    <a href="proj.html"><h5>Data Visualization</h5></a>
+    <a href="data.html"><h5>Dataset</h5></a>
+    <a href="chono.html"><h5>Colophon</h5></a>
+  </div>
+
+  <div class="wrapper" onmouseover="putAway();">
     <img class="left" id="animate" src="play_button.png" 
 	 width="30" height="30" >
     <div id="slidecontainer" class="left">
@@ -44,4 +52,7 @@
     <option>Group by Race</option>
   </select>
 
+  <div id="masthead">
+      <p>A Project by Tom Lucy and Duncan Gans, Fall 2017</p>
+  </div>
 </body>

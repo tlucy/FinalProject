@@ -1,19 +1,25 @@
 body {
-    background-color: white;
-    font-family: sans-serif;
+    font-family: georgia;
+    background-color: #636b46;
+}
+
+a {
+    color: #636b46;
+    font-size: 20px;
+    font-family: georgia;
 }
 
 text {
-    font-family: sans-serif;
-    fill: black;
+    font-family: georgia;
+    fill: #e9e7da;
 }
 
 .x_axis {
-    fill: #f9fbfb;
+    fill: #636b46;
 }
 
 .y_axis {
-    fill: #f9fbfb;
+    fill: #636b46;
 }
 
 .slider {
@@ -21,10 +27,11 @@ text {
     appearance: none;
     width: 90%; /* Full-width */
     height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
+    background: #cda34f; /* Grey background */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
+    z-index: 100;
 }
 
 /* Mouse-over effects */
@@ -36,7 +43,7 @@ text {
 .slider::-moz-range-thumb {
     width: 10px; /* Set a specific slider handle width */
     height: 10px; /* Slider handle height */
-    background: red; /* Green background */
+    background: #636b46; /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
 
@@ -48,8 +55,8 @@ text {
 }
 
 .left {
-    font-family: sans-serif;
-    color: black;
+    font-family: georgia;
+    color: #cda34f;
     font-size: 12px;
 }
 
@@ -66,7 +73,8 @@ text {
     margin:0 auto;
     clear:left;
     height:auto;
-    z-index: 0;
+    z-index: -1;
+    font-family: georgia;
 }
 
 #CHL {
@@ -75,7 +83,8 @@ text {
     margin:5 auto;
     clear:left;
     height:auto;
-    z-index: 0;
+    z-index: -1;
+    text: georgia;
 }
 
 #nav {
@@ -89,8 +98,25 @@ text {
     display: table-cell;
     z-index: 0;
     text-align: center;
-    background-color: dodgerblue;
-    color: #fff;
+    background-color: #cda34f;
+    color: #636b46;
+}
+
+#dropDown {
+    position: fixed;
+    float: left;
+    height: 200px;
+    width: 20%;
+    top: 0;
+    right: 80%;
+    z-index: 1;
+    text-align: center;
+    background-color: #cda34f;
+    color: #636b46;
+}
+
+a:hover {
+    color: #e9e7da;
 }
 
 #header {
@@ -104,9 +130,8 @@ text {
     display: table-cell;
     z-index: 0;
     text-align:left;
-    background-color: #fff;
-    color: black;
-    stroke: 5px black;
+    background-color: #636b46;
+    color: #cda34f;
 }
 
 #controlsCHL {
@@ -115,11 +140,13 @@ text {
     top: 480px;
     right: -250px;
     margin: 0 auto;
+    z-index: 100;
    
-    background: dodgerblue;
-    color: white;
+    background: #cda43f;
+    color: #636b46;
     outline: none;
     cursor: pointer;
+    font-family: georgia;
 }
 
 #controlsBG {
@@ -128,10 +155,23 @@ text {
     top: 480px;
     left: -150px;
     margin: 0 auto;
+    z-index: 100;
 
-    background: dodgerblue;
-    color: white;
+    background: #cda43f;
+    color: #636b46;
     outline: none;
     cursor: pointer;
+    font-family: georiga;
 }
 
+#masthead {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    color: #e9e7da;
+    z-index: 101;
+    width: 100%;
+    height: auto;
+    font-family: georgia;
+    font-size: 10px;
+}
