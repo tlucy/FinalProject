@@ -23,6 +23,8 @@ myNS.totalSpendingMonthState;
 myNS.currSetBG;
 myNS.currSetCHL;
 
+myNS.count = 0;
+
 myNS.x;
 myNS.y;
 myNS.color;
@@ -79,7 +81,7 @@ myNS.optionsBG = {
 
 function main () {
  
-    if (myNS.currSetBG == undefined && myNS.currSetCHL == undefined) {
+    if (myNS.count == 0) {
 	selection();
     }
 
@@ -371,13 +373,11 @@ function sliderDisplay() {
 
 function selection() {
 
+    myNS.count = 1;
+
     // selecting by html ids                                                   
     var chlMenu = d3.select("#controlsCHL");
     var bgMenu = d3.select("#controlsBG");
-
-    // set initial BG and CHL                                                 
-    myNS.currSetCHL = myNS.negMonthState;
-    myNS.currSetBG = myNS.issuesMonth;
 
     // set initial drop down items                                             
     document.getElementById("CHLmetric").value = "Tone";
@@ -420,7 +420,7 @@ function readOtherData() {
     });
     
     d3.csv("Party_Month_State.csv", function(error, data) {
-	myNS.partMonthState = data;
+	myNS.partyMonthState = data;
 	if (error) {
 	    console.log(error);
 	}
@@ -470,14 +470,15 @@ function readOtherData() {
 	    myNS.optionsCHL = {
 		"Tone": myNS.negMonthState,
 		"Party": myNS.partyMonthState,
-		"Total Ads": myNS.totalMontState,
+		"Total Ads": myNS.totalMonthState,
 		"Total Spending": myNS.totalSpendingMonthState
 	    };
 	    
 	    myNS.optionsBG = {
 		"Total per Issue": myNS.issueMonth,
-		"Cost per Issue": myNS.costMonth,
-		"Total per Party": myNS.partyMonth
+		"Frequency of Cost": myNS.costMonth,
+		"Total per Party": myNS.partyMonth,
+		"Ads per Show": myNS.showsMonth
 	    };
 	}
     });
@@ -497,6 +498,8 @@ d3.csv("Issues_Month.csv", function(error, data) {
 	      console.log(error);
 	  }
 	  else {
+	      myNS.currSetCHL = myNS.negMonthState;
+	      myNS.currSetBG = myNS.issuesMonth;
 	      readOtherData();
 	      main();
 	  }
