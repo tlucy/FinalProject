@@ -20,8 +20,8 @@ myNS.showsMonth;
 myNS.totalMonthState;
 myNS.totalSpendingMonthState;
 
-myNS.currSetBG = [];
-myNS.currSetCHL = [];
+myNS.currSetBG;
+myNS.currSetCHL;
 
 myNS.x;
 myNS.y;
@@ -79,7 +79,7 @@ myNS.optionsBG = {
 
 function main () {
  
-    if (myNS.currSetBG.length == 0 && myNS.currSetCHL.length == 0) {
+    if (myNS.currSetBG == undefined && myNS.currSetCHL == undefined) {
 	selection();
     }
 
@@ -380,22 +380,27 @@ function selection() {
     myNS.currSetBG = myNS.issuesMonth;
 
     // set initial drop down items                                             
-    document.getElementById("#CHLmetric").value = "Tone";
-    document.getElementById("#BGmetric").value = "Total per Issue";
+    document.getElementById("CHLmetric").value = "Tone";
+    document.getElementById("BGmetric").value = "Total per Issue";
 
     // update plot if new values are chosen                                    
-    d3.select("#CHLmetrics").on('change', function() {
-        myNS.currSetCHL = myNS.optionsCHL.this.value;
-        myNS.svg1.remove();
+    d3.select("#controlsCHL").on("change", function() {
+	//document.getElementById("CHLmetric").value = this.value;
+        var key = this.value;
+	console.log(key);
+	myNS.currSetCHL = myNS.optionsCHL[key];
+        myNS.svg2.remove();
 	main();
     });
     
     // update plot if new values are chosen                                    
-    d3.select("#BGmetrics").on('change', function() {
-	console.log("print");
-        myNS.currSetBG = myNS.optionsBG.this.value;
-	myNS.svg2.remove();
-        main();
+    d3.select("#controlsBG").on("change", function() {
+	//document.getElementById("CHLmetric").value = this.value;
+        var key = this.value;
+	console.log(key);
+	myNS.currSetBG = myNS.optionsBG[key];
+        myNS.svg1.remove();
+	main();
     });
 
 
@@ -404,11 +409,13 @@ function selection() {
 
 function readOtherData() {
    
-    
     d3.csv("Party_Month.csv", function(error,  data) {
 	myNS.partyMonth = data;
 	if (error) {
 	    console.log(error);
+	}
+	else {
+	    console.log("done1");
 	}
     });
     
@@ -417,12 +424,18 @@ function readOtherData() {
 	if (error) {
 	    console.log(error);
 	}
+	else {
+	    console.log("done2");
+	}
     });
     
     d3.csv("Total_Month_State.csv", function(error, data) {
 	myNS.totalMonthState = data;
 	if (error) {
 	    console.log(error);
+	}
+	else {
+	    console.log("done3");
 	}
     });
     
@@ -431,6 +444,9 @@ function readOtherData() {
 	if (error) {
 	    console.log(error);
 	}
+	else {
+	    console.log("done4");
+	}
     });
 
     d3.csv("Cost_Month.csv", function(error, data) {
@@ -438,12 +454,31 @@ function readOtherData() {
 	if (error) {
 	    console.log(error);
 	}
+	else {
+	    console.log("done5");
+	}
     });
     
     d3.csv("Shows_Month.csv", function(error, data) {
 	myNS.showsMonth = data;
 	if (error) {
 	    console.log(error);
+	}
+	else {
+	    console.log("done6");
+	    
+	    myNS.optionsCHL = {
+		"Tone": myNS.negMonthState,
+		"Party": myNS.partyMonthState,
+		"Total Ads": myNS.totalMontState,
+		"Total Spending": myNS.totalSpendingMonthState
+	    };
+	    
+	    myNS.optionsBG = {
+		"Total per Issue": myNS.issueMonth,
+		"Cost per Issue": myNS.costMonth,
+		"Total per Party": myNS.partyMonth
+	    };
 	}
     });
     
