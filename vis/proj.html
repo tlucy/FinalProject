@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>Political Advertisements During the 2015-2016 Election Cycle</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="proj.css"></link>
+  <link rel="stylesheet" type="text/css" href="proj.css">
 </head>
 <body>
 
@@ -31,25 +31,26 @@
       <input type="range" min="0" max="24" value="22" 
 	     class="slider" id="myRange">
     </div>
-    <p id="date" class="left">January 20asdfdsf15</p>
+    <span id="date" class="left">2015-2016</span>
   </div>
 
   <script type="text/javascript" src="proj.js"> </script>
 
   <select id="controlsCHL">
-    <option>Group by Issue</option>
-    <option>Group by Channel</option>
-    <option>Group by Party</option>
-    <option>Group by State</option>
-    <option>Group by Race</option>
+    <optgroup label="View Options" id="CHLmetric">
+      <option value="Tone">Tone</option>
+      <option value="Party">Party</option>
+      <option value="Total Ads">Total Ads</option>
+      <option value="Total Spending">Total Spending</option>
+    </optgroup>
   </select>
 
   <select id="controlsBG">
-    <option>Group by Issue</option>
-    <option>Group by Channel</option>
-    <option>Group by Party</option>
-    <option>Group by State</option>
-    <option>Group by Race</option>
+    <optgroup label="View Options" id="BGmetric">
+      <option value="Total per Issue">Total per Issue</option>
+      <option value="Cost per Issue">Cost per Issue</option>
+      <option value="Total per Party">Total per Party</option>
+    </optgroup>
   </select>
 
   <div id="masthead">

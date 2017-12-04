@@ -1,16 +1,16 @@
 body {
-    background-color: #636b46;
+    background-color: white;
     font-family: georgia;
 }
 
 a {
-    color: #636b46;
+    color: white;
     font-size: 20px;
     font-family: georgia;
 }
 
 a:hover {
-    color: #e9e7da;
+    color: yellow;
 }
 
 #nav {
@@ -24,8 +24,8 @@ a:hover {
     display: table-cell;
     z-index: 0;
     text-align: center;
-    background-color: #cda34f;
-    color: #636b46;
+    background-color: maroon;
+    color: white;
 }
 
 #dropDown {
@@ -37,8 +37,8 @@ a:hover {
     right: 80%;
     z-index: 1;
     text-align: center;
-    background-color: #cda34f;
-    color: #636b46;
+    background-color: maroon;
+    color: white;
 }
 
 #header {
@@ -52,15 +52,15 @@ a:hover {
     display: table-cell;
     z-index: 0;
     text-align:left;
-    background-color: #636b46;
-    color: #cda34f;
+    background-color: white;
+    color: maroon;
 }
 
 #masthead {
     position: absolute;
     top: 1100px;
     text-align: center;
-    color: #e9e7da;
+    color: black;
     z-index: 101;
     width: 100%;
     height: auto;
@@ -74,7 +74,7 @@ a:hover {
     left: 23%;
     width: 67%;
     font-family: georgia;
-    color: #e9e7da;
+    color: black;
     padding: 10px;
 }
 
