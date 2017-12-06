@@ -110,6 +110,8 @@ function makeScales(value) {
 
 
 function makeBG(value) {
+    //myNS.svg2.remove();
+    //myNS.svg1.remove();
     makeScales(value);
     makeAndLabelBars(value);
     makeAxes(value);
@@ -142,7 +144,6 @@ function makeAndLabelBars (value) {
 
 
 function makeAxes () {
-
     myNS.svg1.selectAll("g").remove();
     var xAxis = 
 	d3.axisBottom(myNS.x)
@@ -195,8 +196,7 @@ function makeSVG (id) {
 
 
 function makeCHL(value) {
-
-    makeHelpers();
+    makeHelpers(value);
 
     makeMap(value);
 
@@ -204,7 +204,7 @@ function makeCHL(value) {
 }
 
 
-function makeHelpers() {
+function makeHelpers(value) {
 
     myNS.projection = d3.geoAlbersUsa()
 	.scale([myNS.wCHL]);
@@ -213,6 +213,12 @@ function makeHelpers() {
 	.projection(myNS.projection);
     
     myNS.color = d3.scaleLinear()
+	.domain([d3.min(myNS.currSetCHL,function(d) {
+			console.log(parseFloat(getMonthVal(d, value)));
+                    return parseFloat(getMonthVal(d, value))}),
+		d3.max(myNS.currSetCHL,function(d) {
+                    return parseFloat(getMonthVal(d, value))})
+		])
 	.range(["maroon", "white"]);
 }
 
@@ -295,13 +301,13 @@ function getMonthVal(dataobject, month) {
 
     
 function makeMap(propertyName) {
-
     myNS.svg2.selectAll("path").remove();
     d3.json(myNS.json, function(json) {
 	for (var i = 0; i < myNS.currSetCHL.length; i++) {
 	    var dataState = myNS.currSetCHL[i].state;	    
 	    var dataValue = parseFloat(getMonthVal(myNS.currSetCHL[i], 
 						   propertyName));
+		console.log(dataValue);
 	    for (var j = 0; j < json.features.length; j++) {
 		var jsonState = json.features[j].properties.name;
 		if (dataState == jsonState) {
@@ -340,16 +346,16 @@ function animate() {
 	    var id = setInterval(frame, 1000);
 	    var date = d3.select("#date");
 	    function frame() {
-		if (val >= 24) {
+		if (val >= 25) {
 		    clearInterval(id);
 		}
 		else
 		{
+		    val = val + 1;
+		    slider.value = val;
 		    makeCHL("value" + slider.value);
 		    makeBG("value" + slider.value);
-		    slider.value = val;
 		    date.text(myNS.dates[slider.value]);
-		    val = val + 1;
 		}
 	    }
 	}
@@ -390,6 +396,7 @@ function selection() {
 	console.log(key);
 	myNS.currSetCHL = myNS.optionsCHL[key];
         myNS.svg2.remove();
+	myNS.svg1.remove();
 	main();
     });
     
@@ -399,6 +406,7 @@ function selection() {
         var key = this.value;
 	console.log(key);
 	myNS.currSetBG = myNS.optionsBG[key];
+	myNS.svg2.remove();
         myNS.svg1.remove();
 	main();
     });
