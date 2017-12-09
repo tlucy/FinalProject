@@ -29,6 +29,9 @@ myNS.x;
 myNS.y;
 myNS.color;
 
+myNS.lowColor = "maroon";
+myNS.highColor = "white";
+
 myNS.projection;
 myNS.path;
 
@@ -65,18 +68,18 @@ myNS.dates = [
 ];
 
 myNS.optionsCHL = {
-    "Tone": myNS.negMonthState,
-    "Party": myNS.partyMonthState,
+    "Ad Tone": myNS.negMonthState,
+    "Distribution by Party": myNS.partyMonthState,
     "Total Ads": myNS.totalMontState,
     "Total Spending": myNS.totalSpendingMonthState
 };
 
 myNS.optionsBG = {
-    "Total per Issue": myNS.issueMonth,
-    "Cost per Issue": myNS.costMonth,
-    "Total per Party": myNS.partyMonth
+    "Total Ads per Issue": myNS.issueMonth,
+    "Frequency of Ad Cost": myNS.costMonth,
+    "Total Ads per Party": myNS.partyMonth,
+    "Total Ads per TV Genre": myNS.showsMonth
 };
-
 
 
 function main () {
@@ -110,8 +113,8 @@ function makeScales(value) {
 
 
 function makeBG(value) {
-    //myNS.svg2.remove();
-    //myNS.svg1.remove();
+    //myns.svg2.remove();
+    //myns.svg1.remove();
     makeScales(value);
     makeAndLabelBars(value);
     makeAxes(value);
@@ -121,7 +124,7 @@ function makeBG(value) {
 function makeAndLabelBars (value) {
 
     var barPadding = 1;     
-    var labelYoffset = 0; 
+    var labelyoffset = 0; 
     myNS.svg1.selectAll("rect.issue").remove();   
     myNS.svg1.selectAll("rect.issue") 
 	.data(myNS.currSetBG)
@@ -177,8 +180,7 @@ function makeSVG (id) {
 	    .append("svg")
 	    .attr("id", id)
 	    .attr("width", myNS.wBG)
-	    .attr("height", myNS.hBG)
-	    .attr("onmouseover", "putAway();");
+	    .attr("height", myNS.hBG);
 	
 	return svg
     }
@@ -187,8 +189,7 @@ function makeSVG (id) {
 	    .append("svg")
 	    .attr("id", id)
 	    .attr("width", myNS.wCHL)
-	    .attr("height", myNS.hCHL)
-	    .attr("onmouseover", "putAway();");
+	    .attr("height", myNS.hCHL);
 	
 	return svg;
     } 
@@ -214,12 +215,12 @@ function makeHelpers(value) {
     
     myNS.color = d3.scaleLinear()
 	.domain([d3.min(myNS.currSetCHL,function(d) {
-			console.log(parseFloat(getMonthVal(d, value)));
+
                     return parseFloat(getMonthVal(d, value))}),
 		d3.max(myNS.currSetCHL,function(d) {
                     return parseFloat(getMonthVal(d, value))})
 		])
-	.range(["maroon", "white"]);
+	.range([myNS.lowColor, myNS.highColor]);
 }
 
 
@@ -240,7 +241,7 @@ function makeLegend() {
     var colorScaleLin = d3.scaleLinear()
         .domain([0, newData.length-1])
         .interpolate(d3.interpolateLab)
-        .range(["maroon", "white"]);
+        .range([myNS.lowColor, myNS.highColor]);
     
     legend.selectAll('rect')
         .data(newData)
@@ -307,7 +308,6 @@ function makeMap(propertyName) {
 	    var dataState = myNS.currSetCHL[i].state;	    
 	    var dataValue = parseFloat(getMonthVal(myNS.currSetCHL[i], 
 						   propertyName));
-		console.log(dataValue);
 	    for (var j = 0; j < json.features.length; j++) {
 		var jsonState = json.features[j].properties.name;
 		if (dataState == jsonState) {
@@ -386,29 +386,35 @@ function selection() {
     var bgMenu = d3.select("#controlsBG");
 
     // set initial drop down items                                             
-    document.getElementById("CHLmetric").value = "Tone";
-    document.getElementById("BGmetric").value = "Total per Issue";
-
+    document.getElementById("CHLmetric").value = "Ad Tone";
+    document.getElementById("BGmetric").value = "Total Ads per Issue";
+    
     // update plot if new values are chosen                                    
     d3.select("#controlsCHL").on("change", function() {
-	//document.getElementById("CHLmetric").value = this.value;
         var key = this.value;
 	console.log(key);
 	myNS.currSetCHL = myNS.optionsCHL[key];
         myNS.svg2.remove();
 	myNS.svg1.remove();
 	main();
+	
+	var descrip = document.getElementById("chlSelect");
+	var textNode = this.value;
+	descrip.innerHTML = textNode;
     });
     
     // update plot if new values are chosen                                    
     d3.select("#controlsBG").on("change", function() {
-	//document.getElementById("CHLmetric").value = this.value;
         var key = this.value;
 	console.log(key);
 	myNS.currSetBG = myNS.optionsBG[key];
 	myNS.svg2.remove();
         myNS.svg1.remove();
 	main();
+	
+	var descrip = document.getElementById("bgSelect");
+	var textNode = this.value;
+	descrip.innerHTML = textNode;
     });
 
 
@@ -476,18 +482,19 @@ function readOtherData() {
 	    console.log("done6");
 	    
 	    myNS.optionsCHL = {
-		"Tone": myNS.negMonthState,
-		"Party": myNS.partyMonthState,
+		"Ad Tone": myNS.negMonthState,
+		"Distribution by Party": myNS.partyMonthState,
 		"Total Ads": myNS.totalMonthState,
 		"Total Spending": myNS.totalSpendingMonthState
 	    };
-	    
+	    console.log(myNS.optionsCHL);
 	    myNS.optionsBG = {
-		"Total per Issue": myNS.issueMonth,
-		"Frequency of Cost": myNS.costMonth,
-		"Total per Party": myNS.partyMonth,
-		"Ads per Show": myNS.showsMonth
+		"Total Ads per Issue": myNS.issuesMonth,
+		"Frequency of Ad Cost": myNS.costMonth,
+		"Total Ads per Party": myNS.partyMonth,
+		"Total Ads per TV Genre": myNS.showsMonth
 	    };
+	    console.log(myNS.optionsBG);
 	}
     });
     
@@ -514,30 +521,3 @@ d3.csv("Issues_Month.csv", function(error, data) {
       });
     }
 });
-
-
-
-
-
-
-
-					      
-// allows for drop down menu
-
-function dropDown() {
-    
-    var info = document.getElementById("dropDown");
-
-    if (info.style.visibility == "hidden") {
-	info.style.visibility = "visible";
-    }
-}
-
-function putAway() {
- 
-    var info = document.getElementById("dropDown");
-    
-    if (info.style.visibility == "visible") {
-	info.style.visibility = "hidden";
-    }
-}

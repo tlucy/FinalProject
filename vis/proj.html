@@ -6,25 +6,20 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <link rel="stylesheet" type="text/css" href="proj.css">
 </head>
+
 <body>
+   <ul>
+      <li><a href="home.html"><h5>Home</h5></a></li>
+      <li><a href="proj.html"><h5>Data Visualization</h5></a></li>
+      <li><a href="projectDescrip.html"><h5>Project Description</h5></a></li>
+      <li><a href="dataDescrip.html"><h5>Data Description</h5></a></li>
+      <li><a href="chono.html"><h5>Colophon</h5></a></li>
+    </ul>
 
-  <div id="header" onmouseover="putAway();">
-    <h1>Political Advertisements in the 2015-2016 Election Cycle</h1>
-  </div>
+    <h1 id="header">Political Advertisements in the 2015-2016 Election
+    Cycle</h1> 
 
-  
-  <div id="nav" onmouseover="dropDown();">
-    <h3 id="navText">Navigation</h3>
-  </div>
-
-  <div id="dropDown" style="visibility: hidden">
-    <a href="home.html"><h5>Home</h5></a>
-    <a href="proj.html"><h5>Data Visualization</h5></a>
-    <a href="data.html"><h5>Dataset</h5></a>
-    <a href="chono.html"><h5>Colophon</h5></a>
-  </div>
-
-  <div class="wrapper" onmouseover="putAway();">
+  <div class="wrapper">
     <img class="left" id="animate" src="play_button.png" 
 	 width="30" height="30" >
     <div id="slidecontainer" class="left">
@@ -38,8 +33,8 @@
 
   <select id="controlsCHL">
     <optgroup label="View Options" id="CHLmetric" value="">
-      <option value="Tone">Tone</option>
-      <option value="Party">Party</option>
+      <option value="Ad Tone">Ad Tone</option>
+      <option value="Distribution by Party">Distribution by Party</option>
       <option value="Total Ads">Total Ads</option>
       <option value="Total Spending">Total Spending</option>
     </optgroup>
@@ -47,12 +42,22 @@
 
   <select id="controlsBG">
     <optgroup label="View Options" id="BGmetric" value="">
-      <option value="Total per Issue">Total per Issue</option>
-      <option value="Frequency of Cost">Frequency of Cost</option>
-      <option value="Total per Party">Total per Party</option>
-      <option value="Ads per Show">Ads per Show</option>
+      <option value="Total Ads per Issue">Total Ads per Issue</option>
+      <option value="Frequency of Ad Cost">Frequency of Ad Cost</option>
+      <option value="Total Ads per Party">Total Ads per Party</option>
+      <option value="Total Ads per TV Genre">Total Ads per TV Genre</option>
     </optgroup>
   </select>
+
+  <div id="info">
+    <p>You are currently viewing <span id="chlSelect">Ad Tone</span> on the
+    chloropleth and  <span id="bgSelect">Total Ads per Issue</span> on the bar
+    graph. Click on the play button on the left of the page to watch as
+    these attributes change month to month on their corresponding
+    graphs. Alternatively, click and drag the slider to view an individual
+    month.<p> 
+      
+  </div>
 
   <div id="masthead">
       <p>A Project by Tom Lucy and Duncan Gans, Fall 2017</p>

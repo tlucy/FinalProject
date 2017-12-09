@@ -9,6 +9,35 @@ a {
     font-family: georgia;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: maroon;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding:1px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */                            
+li a:hover {
+    background-color: #111;
+}
+
+#header {
+    text-align: center;
+}
+
 text {
     font-family: georgia;
     fill: black;
@@ -50,7 +79,8 @@ text {
 
 .wrapper {
     position: absolute;
-    top: 15%;
+    left: 1%;
+    top: 30%;
 }
 
 .left {
@@ -68,6 +98,7 @@ text {
 
 #BG {
     position:absolute;
+    top: 15%;
     right: 0;
     margin:0 auto;
     height:auto;
@@ -77,6 +108,7 @@ text {
 
 #CHL {
     position: absolute;
+    top: 15%;
     left: 0;
     margin: 5 auto;
     height:auto;
@@ -84,57 +116,10 @@ text {
     text: georgia;
 }
 
-#nav {
-    position:absolute;
-    float: left;
-    margin:0 auto;
-    height:75px;
-    width:20%;
-    top: 0;
-    right: 80%;
-    display: table-cell;
-    z-index: 0;
-    text-align: center;
-    background-color: maroon;
-    color: white;
-}
-
-#dropDown {
-    position: fixed;
-    float: left;
-    height: 200px;
-    width: 20%;
-    top: 0;
-    right: 80%;
-    z-index: 1;
-    text-align: center;
-    background-color: maroon;
-    color: white;
-}
-
-a:hover {
-    color: yellow;
-}
-
-#header {
-    position:absolute;
-    float: right;
-    margin:0 auto;
-    height:75px;
-    width:80%;
-    top: 0;
-    left: 23%;
-    display: table-cell;
-    z-index: 0;
-    text-align:left;
-    background-color: white;
-    color: maroon;
-}
-
 #controlsCHL {
     position:relative;
-    float: left;
-    top: 480px;
+    float:left;
+    top: 400px;
     right: -250px;
     margin: 0 auto;
     z-index: 100;
@@ -150,7 +135,7 @@ a:hover {
 #controlsBG {
     position: relative;
     float: right;
-    top: 480px;
+    top: 400px;
     left: -150px;
     margin: 0 auto;
     z-index: 100;
@@ -166,11 +151,27 @@ a:hover {
 #masthead {
     position: absolute;
     text-align: center;
-    bottom: 0;
+    top: 675px;
     color: black;
     z-index: 101;
     width: 100%;
     height: auto;
     font-family: georgia;
     font-size: 10px;
+}
+
+#info {
+    position: absolute;
+    top: 610px;
+    color: black;
+    z-index: 101;
+    left: 25%;
+    width: 50%;
+    height: auto;
+    font-family: georgia;
+    font-size: 12px;
+}
+
+span {
+    color: blue;
 }

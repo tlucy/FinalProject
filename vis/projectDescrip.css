@@ -7,7 +7,7 @@ a {
     color: white;
     font-size: 20px;
     font-family: georgia;
-}    
+}
 
 ul {
     list-style-type: none;
@@ -29,7 +29,7 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
+/* Change the link color to #111 (black) on hover */                            
 li a:hover {
     background-color: #111;
 }
@@ -38,20 +38,17 @@ li a:hover {
     text-align: center;
 }
 
-img {
-    width: 300px;
-    height: 200px;
+
+#descrip {
+    position: absolute;
+    left: 12.5%;
+    top: 160px;
+    margin: 0 auto;
+    width: 75%;
+    font-family: georgia;
+    color: black;
 }
 
-#clinton {
-    position: absolute;
-    left: 20%;
-}
-
-#trump {
-    position: absolute;
-    right:20%;
-}
 
 #masthead {
     position: absolute;
@@ -63,18 +60,4 @@ img {
     height: auto;
     font-family: georgia;
     font-size: 10px;
-}
-
-#descrip {
-    position: absolute;
-    left: 12.5%;
-    top: 400px;
-    margin: 0 auto;
-    width: 75%;
-    font-family: georgia;
-    color: black;
-}
-
-p {
-    padding: 0px;
 }
