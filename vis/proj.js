@@ -23,9 +23,9 @@ myNS.totalMonthState;
 myNS.totalSpendingMonthState;
 
 // republican
-myNS.repubCostMonthState;
+myNS.repubCostMonth;
 myNS.repubIssuesMonth;
-myNS.repubNegMonth;
+myNS.repubNegMonthState;
 myNS.repubShowsMonth;
 myNS.repubSpendingMonthState;
 myNS.repubTotalMonthState;
@@ -101,19 +101,17 @@ myNS.loadCounter = 0;
 
 
 // which parties are showing
-myNS.partyShow = "both";
+myNS.partyShow = "uninitialized";
 
 myNS.currOptions;
 
 myNS.check = true;
 
+myNS.currKeyCHL = "Ad Tone";
+myNS.currKeyBG = "Total Ads per Issue";
 
 function main () {
     
-    if (myNS.count == 0) {
-	selection();
-    }
-
     console.log(myNS.currSetBG);
     console.log(myNS.currSetCHL);
 
@@ -122,7 +120,7 @@ function main () {
 
     animate();
     sliderDisplay();
-    
+    selection();
     buttonListener();
 }
 
@@ -404,6 +402,18 @@ function sliderDisplay() {
   }
 }
 
+function setCurrs() {
+   console.log("ASdf");
+    if (myNS.partyShow == "rep") {
+        myNS.currSetCHL = myNS.optionsRepCHL[myNS.currKeyCHL];
+        myNS.currSetBG = myNS.optionsRepBG[myNS.currKeyBG];
+    }
+    if (myNS.partyShow == "dem") {
+        myNS.currSetCHL = myNS.optionsDemCHL[myNS.currKeyCHL];
+        myNS.currSetBG = myNS.optionsDemBG[myNS.currKeyBG];
+    }
+}
+
 
 function selection() {
 
@@ -417,23 +427,20 @@ function selection() {
     document.getElementById("CHLmetric").value = "Ad Tone";
     document.getElementById("BGmetric").value = "Total Ads per Issue";
     
-    myNS.currOptions = myNS.optionsCHL;
+    
 
-    if (myNS.partyShow == "rep") {
-        myNS.currOptions = myNS.optionsRepCHL;
-    }
-    if (myNS.partyShow == "dem") {
-        myNS.currOptions = myNS.optionsDemCHL;
-    }
- 
-    console.log(myNS.currOptions);
+    setCurrs();
+
     // update plot if new values are chosen                                    
     d3.select("#controlsCHL").on("change", function() {
+	myNS.currOptions = myNS.optionsCHL;
+	myNS.currKeyCHL = this.value;
         var key = this.value;
 	console.log(key);
 	myNS.currSetCHL = myNS.currOptions[key];
         myNS.svg2.remove();
 	myNS.svg1.remove();
+	setCurrs();
 	main();
 	
 	var descrip = document.getElementById("chlSelect");
@@ -443,11 +450,14 @@ function selection() {
     
     // update plot if new values are chosen                                    
     d3.select("#controlsBG").on("change", function() {
+	myNS.currOptions = myNS.optionsBG;
+	myNS.currKeyBG = this.value;
         var key = this.value;
 	console.log(key);
 	myNS.currSetBG = myNS.currOptions[key];
 	myNS.svg2.remove();
         myNS.svg1.remove();
+	setCurrs();
 	main();
 	
 	var descrip = document.getElementById("bgSelect");
@@ -546,7 +556,7 @@ function readOtherData() {
     });
 
     d3.csv("repubCostMonthState.csv", function(error, data) {
-        myNS.repubCostMonthState = data;
+        myNS.repubCostMonth = data;
         if (error) {
             console.log(error);
         }
@@ -574,7 +584,7 @@ function readOtherData() {
     });
 
     d3.csv("repubNegMonth.csv", function(error, data) {
-        myNS.repubNegMonth = data;
+        myNS.repubNegMonthState = data;
         if (error) {
             console.log(error);
         }
@@ -792,7 +802,7 @@ function loadOptions() {
         "Ad Tone": myNS.demoNegMonthState,
         "Distribution by Party": myNS.demoPartyMonthState,
         "Total Ads": myNS.demoTotalMonthState,
-        "Total Spending": myNS.demoTotalSpendingMonthState
+        "Total Spending": myNS.demoSpendingMonthState
     };
     
     myNS.optionsDemBG = {
@@ -806,7 +816,7 @@ function loadOptions() {
         "Ad Tone": myNS.repubNegMonthState,
         "Distribution by Party": myNS.repubPartyMonthState,
         "Total Ads": myNS.repubTotalMonthState,
-        "Total Spending": myNS.repubTotalSpendingMonthState
+        "Total Spending": myNS.repubSpendingMonthState
     };
     
     myNS.optionsRepBG = {
