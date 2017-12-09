@@ -1,3 +1,4 @@
+// namespace
 myNS = {};
 
 myNS.svg1;
@@ -11,6 +12,7 @@ myNS.p= 90;      // padding of graph from svg edges; leave room for labels
 
 myNS.json = "us-states.json";
 
+// both parties
 myNS.issuesMonth;
 myNS.negMonthState;
 myNS.costMonth;
@@ -20,24 +22,51 @@ myNS.showsMonth;
 myNS.totalMonthState;
 myNS.totalSpendingMonthState;
 
+// republican
+myNS.repubCostMonthState;
+myNS.repubIssuesMonth;
+myNS.repubNegMonth;
+myNS.repubShowsMonth;
+myNS.repubSpendingMonthState;
+myNS.repubTotalMonthState;
+myNS.repubPartyMonth;
+myNS.repubPartyMonthState;
+
+// democrat
+myNS.demoCostMonth;
+myNS.demoIssuesMonth;
+myNS.demoNegMonthState;
+myNS.demoShowsMonth;
+myNS.demoSpendingMonthState;
+myNS.demoTotalMonthState;
+myNS.demoPartyMonth;
+myNS.demoPartyMonthState;
+
+// current settings
 myNS.currSetBG;
 myNS.currSetCHL;
 
+// make selection only run once
 myNS.count = 0;
 
+// scales
 myNS.x;
 myNS.y;
 myNS.color;
 
-myNS.lowColor = "maroon";
+// color settings
+myNS.lowColor = "#c76706";
 myNS.highColor = "white";
 
+// for chloropleth
 myNS.projection;
 myNS.path;
 
+// for legend
 myNS.legendWidth = 200;
 myNS.divisions = 100;
 
+// slider dates
 myNS.dates = [
     "2015-2016",
     "January 2015",
@@ -67,23 +96,20 @@ myNS.dates = [
     "January 2017"
 ];
 
-myNS.optionsCHL = {
-    "Ad Tone": myNS.negMonthState,
-    "Distribution by Party": myNS.partyMonthState,
-    "Total Ads": myNS.totalMontState,
-    "Total Spending": myNS.totalSpendingMonthState
-};
+// data load counter
+myNS.loadCounter = 0;
 
-myNS.optionsBG = {
-    "Total Ads per Issue": myNS.issueMonth,
-    "Frequency of Ad Cost": myNS.costMonth,
-    "Total Ads per Party": myNS.partyMonth,
-    "Total Ads per TV Genre": myNS.showsMonth
-};
+
+// which parties are showing
+myNS.partyShow = "both";
+
+myNS.currOptions;
+
+myNS.check = true;
 
 
 function main () {
- 
+    
     if (myNS.count == 0) {
 	selection();
     }
@@ -96,6 +122,8 @@ function main () {
 
     animate();
     sliderDisplay();
+    
+    buttonListener();
 }
 
 
@@ -142,7 +170,7 @@ function makeAndLabelBars (value) {
 	.attr("height", function(d) {
 	    return myNS.hBG - myNS.p - myNS.y(parseInt(getMonthVal(d, value)));
 	})
-	.attr("fill", "maroon");
+	.attr("fill", myNS.lowColor);
 }
 
 
@@ -389,11 +417,21 @@ function selection() {
     document.getElementById("CHLmetric").value = "Ad Tone";
     document.getElementById("BGmetric").value = "Total Ads per Issue";
     
+    myNS.currOptions = myNS.optionsCHL;
+
+    if (myNS.partyShow == "rep") {
+        myNS.currOptions = myNS.optionsRepCHL;
+    }
+    if (myNS.partyShow == "dem") {
+        myNS.currOptions = myNS.optionsDemCHL;
+    }
+ 
+    console.log(myNS.currOptions);
     // update plot if new values are chosen                                    
     d3.select("#controlsCHL").on("change", function() {
         var key = this.value;
 	console.log(key);
-	myNS.currSetCHL = myNS.optionsCHL[key];
+	myNS.currSetCHL = myNS.currOptions[key];
         myNS.svg2.remove();
 	myNS.svg1.remove();
 	main();
@@ -407,7 +445,7 @@ function selection() {
     d3.select("#controlsBG").on("change", function() {
         var key = this.value;
 	console.log(key);
-	myNS.currSetBG = myNS.optionsBG[key];
+	myNS.currSetBG = myNS.currOptions[key];
 	myNS.svg2.remove();
         myNS.svg1.remove();
 	main();
@@ -430,6 +468,10 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done1");
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
     
@@ -440,6 +482,10 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done2");
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
     
@@ -450,6 +496,10 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done3");
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
     
@@ -460,6 +510,10 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done4");
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
 
@@ -470,6 +524,10 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done5");
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
     
@@ -480,24 +538,314 @@ function readOtherData() {
 	}
 	else {
 	    console.log("done6");
-	    
-	    myNS.optionsCHL = {
-		"Ad Tone": myNS.negMonthState,
-		"Distribution by Party": myNS.partyMonthState,
-		"Total Ads": myNS.totalMonthState,
-		"Total Spending": myNS.totalSpendingMonthState
-	    };
-	    console.log(myNS.optionsCHL);
-	    myNS.optionsBG = {
-		"Total Ads per Issue": myNS.issuesMonth,
-		"Frequency of Ad Cost": myNS.costMonth,
-		"Total Ads per Party": myNS.partyMonth,
-		"Total Ads per TV Genre": myNS.showsMonth
-	    };
-	    console.log(myNS.optionsBG);
+	    myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
 	}
     });
+
+    d3.csv("repubCostMonthState.csv", function(error, data) {
+        myNS.repubCostMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done7");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubIssuesMonth.csv", function(error, data) {
+        myNS.repubIssuesMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done8");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubNegMonth.csv", function(error, data) {
+        myNS.repubNegMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done9");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubShowsMonth.csv", function(error, data) {
+        myNS.repubShowsMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done10");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubSpendingMonthState.csv", function(error, data) {
+        myNS.repubSpendingMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done11");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubTotalMonthState.csv", function(error, data) {
+        myNS.repubTotalMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done12");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoCostMonth.csv", function(error, data) {
+        myNS.demoCostMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done13");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoIssuesMonth.csv", function(error, data) {
+        myNS.demoIssuesMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done14");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoNegMonthState.csv", function(error, data) {
+        myNS.demoNegMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done15");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoShowsMonth.csv", function(error, data) {
+        myNS.demoShowsMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done16");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoSpendingMonthState.csv", function(error, data) {
+        myNS.demoSpendingMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done17");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoTotalMonthState.csv", function(error, data) {
+        myNS.demoTotalMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done18");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubPartyMonth.csv", function(error, data) {
+        myNS.repubPartyMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done19");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoPartyMonth.csv", function(error, data) {
+        myNS.demoPartyMonth = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done20");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("repubPartyMonthState.csv", function(error, data) {
+        myNS.repubPartyMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done21");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+    d3.csv("demoPartyMonthState.csv", function(error, data) {
+        myNS.demoPartyMonthState = data;
+        if (error) {
+            console.log(error);
+        }
+        else {
+            console.log("done22");
+            myNS.loadCounter++;
+	    if (myNS.loadCounter == 22) {
+		loadOptions();
+	    }
+	}
+    });
+
+}
+
+
+function loadOptions() {
+
+    myNS.optionsCHL = {
+        "Ad Tone": myNS.negMonthState,
+        "Distribution by Party": myNS.partyMonthState,
+        "Total Ads": myNS.totalMonthState,
+        "Total Spending": myNS.totalSpendingMonthState
+    };
     
+    myNS.optionsBG = {
+        "Total Ads per Issue": myNS.issuesMonth,
+        "Frequency of Ad Cost": myNS.costMonth,
+        "Total Ads per Party": myNS.partyMonth,
+        "Total Ads per TV Genre": myNS.showsMonth
+    };
+
+    myNS.optionsDemCHL = {
+        "Ad Tone": myNS.demoNegMonthState,
+        "Distribution by Party": myNS.demoPartyMonthState,
+        "Total Ads": myNS.demoTotalMonthState,
+        "Total Spending": myNS.demoTotalSpendingMonthState
+    };
+    
+    myNS.optionsDemBG = {
+        "Total Ads per Issue": myNS.demoIssuesMonth,
+        "Frequency of Ad Cost": myNS.demoCostMonth,
+        "Total Ads per Party": myNS.demoPartyMonth,
+        "Total Ads per TV Genre": myNS.demoShowsMonth	
+    };
+    
+    myNS.optionsRepCHL = {
+        "Ad Tone": myNS.repubNegMonthState,
+        "Distribution by Party": myNS.repubPartyMonthState,
+        "Total Ads": myNS.repubTotalMonthState,
+        "Total Spending": myNS.repubTotalSpendingMonthState
+    };
+    
+    myNS.optionsRepBG = {
+        "Total Ads per Issue": myNS.repubIssuesMonth,
+        "Frequency of Ad Cost": myNS.repubCostMonth,
+        "Total Ads per Party": myNS.repubPartyMonth,
+        "Total Ads per TV Genre": myNS.repubShowsMonth
+    };
+
+    myNS.check = false;
+}
+
+
+function buttonListener() {
+
+    d3.select("#both").on("click", function() {
+	myNS.partyShow = "both";
+	myNS.svg1.remove();
+	myNS.svg2.remove();
+	selection();
+	main();
+	});
+
+     d3.select("#democrat").on("click", function() {
+         myNS.partyShow = "dem";
+	 myNS.svg1.remove();
+	 myNS.svg2.remove();
+	 selection();
+	 main();
+     });
+
+     d3.select("#republican").on("click", function() {
+         myNS.partyShow = "rep";
+	 myNS.svg1.remove();
+	 myNS.svg2.remove();
+	 selection();
+	 main();
+     });
+
 }
 
 	   
