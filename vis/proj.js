@@ -110,6 +110,13 @@ myNS.check = true;
 myNS.currKeyCHL = "Ad Tone";
 myNS.currKeyBG = "Total Ads per Issue";
 
+myNS.party = {
+    "both": "both parties",
+    "rep": "the Republican party",
+    "dem": "the Democratic party"
+};
+
+
 function main () {
     
     console.log(myNS.currSetBG);
@@ -403,18 +410,21 @@ function sliderDisplay() {
 }
 
 function setCurrs() {
-   console.log("ASdf");
+
     if (myNS.partyShow == "rep") {
         myNS.currSetCHL = myNS.optionsRepCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsRepBG[myNS.currKeyBG];
+	myNS.lowColor = "red";
     }
     if (myNS.partyShow == "dem") {
         myNS.currSetCHL = myNS.optionsDemCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsDemBG[myNS.currKeyBG];
+	myNS.lowColor = "blue";
     }
     if (myNS.partyShow == "both") {
-       myNS.currSetBG = myNS.optionsBG[myNS.currKeyBG];
-       myNS.currSetCHL = myNS.optionsCHL[myNS.currKeyCHL];
+	myNS.currSetBG = myNS.optionsBG[myNS.currKeyBG];
+	myNS.currSetCHL = myNS.optionsCHL[myNS.currKeyCHL];
+	myNS.lowColor = "#c76706";
     }
 }
 
@@ -446,7 +456,7 @@ function selection() {
 	setCurrs();
 	main();
 	
-	var descrip = document.getElementById("chlSelect");
+ 	var descrip = document.getElementById("chlSelect");
 	var textNode = this.value;
 	descrip.innerHTML = textNode;
     });
@@ -841,6 +851,10 @@ function buttonListener() {
 	myNS.svg2.remove();
 	selection();
 	main();
+
+	var descrip2 = document.getElementById("party");
+	var textNode2 = myNS.party[myNS.partyShow];
+	descrip2.innerHTML = textNode2;
 	});
 
      d3.select("#democrat").on("click", function() {
@@ -849,6 +863,10 @@ function buttonListener() {
 	 myNS.svg2.remove();
 	 selection();
 	 main();
+	
+	 var descrip2 = document.getElementById("party");
+	 var textNode2 = myNS.party[myNS.partyShow];
+	 descrip2.innerHTML = textNode2;
      });
 
      d3.select("#republican").on("click", function() {
@@ -857,6 +875,10 @@ function buttonListener() {
 	 myNS.svg2.remove();
 	 selection();
 	 main();
+	 
+	 var descrip2 = document.getElementById("party");
+	 var textNode2 = myNS.party[myNS.partyShow];
+	 descrip2.innerHTML = textNode2;
      });
 
 }

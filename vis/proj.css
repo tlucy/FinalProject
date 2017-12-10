@@ -194,3 +194,11 @@ text {
 span {
     color: #c76706;
 }
+
+#democrat {
+    background-color: blue;
+}
+
+#republican {
+    background-color: red;
+}
