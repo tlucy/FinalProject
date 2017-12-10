@@ -414,17 +414,43 @@ function setCurrs() {
     if (myNS.partyShow == "rep") {
         myNS.currSetCHL = myNS.optionsRepCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsRepBG[myNS.currKeyBG];
-	myNS.lowColor = "red";
+	if (myNS.currKeyCHL == "Ad Tone") {
+          myNS.lowColor = "red";
+          myNS.highColor = "white";
+        }
+        else {
+          myNS.lowColor = "white";
+          myNS.highColor = "red";
+        }
     }
     if (myNS.partyShow == "dem") {
         myNS.currSetCHL = myNS.optionsDemCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsDemBG[myNS.currKeyBG];
-	myNS.lowColor = "blue";
+	if (myNS.currKeyCHL == "Ad Tone") {
+ 	  myNS.lowColor = "blue";
+	  myNS.highColor = "white";
+        }
+        else {
+	  myNS.lowColor = "white";
+          myNS.highColor = "blue";
+	}
     }
     if (myNS.partyShow == "both") {
 	myNS.currSetBG = myNS.optionsBG[myNS.currKeyBG];
 	myNS.currSetCHL = myNS.optionsCHL[myNS.currKeyCHL];
-	myNS.lowColor = "#c76706";
+	if (myNS.currKeyCHL == "Ad Tone") {
+          myNS.lowColor = "#c76706";
+          myNS.highColor = "white";
+        }
+        else if (myNS.currKeyCHL == "Distribution by Party") {
+	console.log("Asdf");
+          myNS.lowColor = "blue";
+          myNS.highColor = "red";
+        }
+        else {
+          myNS.lowColor = "white";
+          myNS.highColor = "#c76706";
+        }
     }
 }
 
