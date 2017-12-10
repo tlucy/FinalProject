@@ -412,6 +412,10 @@ function setCurrs() {
         myNS.currSetCHL = myNS.optionsDemCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsDemBG[myNS.currKeyBG];
     }
+    if (myNS.partyShow == "both") {
+       myNS.currSetBG = myNS.optionsBG[myNS.currKeyBG];
+       myNS.currSetCHL = myNS.optionsCHL[myNS.currKeyCHL];
+    }
 }
 
 
@@ -426,7 +430,6 @@ function selection() {
     // set initial drop down items                                             
     document.getElementById("CHLmetric").value = "Ad Tone";
     document.getElementById("BGmetric").value = "Total Ads per Issue";
-    
     
 
     setCurrs();
