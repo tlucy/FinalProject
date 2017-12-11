@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Political Advertisements in the 2015-2016 Election Cycle</title>
+    
+    <link rel="stylesheet" type="text/css" href="home.css"></link>
+    
+  </head>
+
+  <body>
+    <ul>
+      <li><a href="home.html"><h5>Home</h5></a></li>
+      <li><a href="proj.html"><h5>Data Visualization</h5></a></li>
+      <li><a href="projectDescrip.html"><h5>Project Description</h5></a></li>
+      <li><a href="dataDescrip.html"><h5>Data Description</h5></a></li>
+    .html"><h5>Colophon</h5></a></li>
+    </ul>
+
+    <h1 id="header">Political Advertisements in the 2015-2016 Election
+    Cycle</h1> 
+
+    <img id="clinton" src="clinton.png">
+    <img id="trump" src="trump.jpg">
+
+    <div id="descrip">
+      <p>How is political advertising different in different states? How is it
+      different at different points in the election cycle? With a dataset from
+      Professor Michael Franz of the Bowdoin College Government and Legal
+      Studies Department, we seek to answer these questions and many more.</p>
+      <p>Navigate to the Project Description and the Data Description for
+      background information, or head straight to the Data Visualization to
+      explore the 2015-2016 election cycle in a totally new way!</p> 
+    </div>
+
+    <div id="masthead">
+      <p>A Project by Tom Lucy and Duncan Gans, Fall 2017</p>
+    </div>
+  </body>
+</html>
