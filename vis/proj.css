@@ -14,7 +14,8 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: maroon;
+    background-color: white;
+    border-bottom: black solid;
 }
 
 li {
@@ -23,7 +24,7 @@ li {
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding:1px 16px;
     text-decoration: none;
@@ -31,7 +32,7 @@ li a {
 
 /* Change the link color to #111 (black) on hover */                            
 li a:hover {
-    background-color: #111;
+    background-color: #d3d3d3;
 }
 
 #header {
@@ -196,11 +197,11 @@ span {
 }
 
 #democrat {
-    background-color: blue;
+    background-color: #00a6ef;
 }
 
 #republican {
-    background-color: red;
+    background-color: #e91d0e;
 }
 
 #both {

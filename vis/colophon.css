@@ -9,7 +9,7 @@ a {
     font-family: georgia;
 }
 
-ul {
+.dad {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -21,7 +21,6 @@ ul {
 .drop {
     float: left;
 }
-
 .drop a {
     display: block;
     color: black;
@@ -35,13 +34,9 @@ li a:hover {
     background-color: #d3d3d3;
 }
 
-#header {
-    text-align: center;
-}
-
 #masthead {
     position: absolute;
-    top: 1150px;
+    bottom: 0;
     text-align: center;
     color: black;
     z-index: 101;
@@ -51,16 +46,14 @@ li a:hover {
     font-size: 10px;
 }
 
-#descrip {
-    position: absolute;
-    left: 12.5%;
-    top: 160px;
-    margin: 0 auto;
-    width: 75%;
-    font-family: georgia;
-    color: black;
+p {
+    padding-left: 15px;
 }
 
-p {
-    padding: 5px;
+h3 {
+    padding-left: 10px;
+}
+
+h1 {
+    text-align: center;
 }

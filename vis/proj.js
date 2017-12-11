@@ -57,6 +57,7 @@ myNS.color;
 // color settings
 myNS.lowColor = "#c76706";
 myNS.highColor = "white";
+myNS.rectColor = "#c76706";
 
 // for chloropleth
 myNS.projection;
@@ -175,7 +176,7 @@ function makeAndLabelBars (value) {
 	.attr("height", function(d) {
 	    return myNS.hBG - myNS.p - myNS.y(parseInt(getMonthVal(d, value)));
 	})
-	.attr("fill", myNS.lowColor);
+	.attr("fill", myNS.rectColor);
 }
 
 
@@ -414,42 +415,45 @@ function setCurrs() {
     if (myNS.partyShow == "rep") {
         myNS.currSetCHL = myNS.optionsRepCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsRepBG[myNS.currKeyBG];
+	myNS.rectColor = "#e91d0e";
 	if (myNS.currKeyCHL == "Ad Tone") {
-          myNS.lowColor = "red";
+          myNS.lowColor = "#e91d0e";
           myNS.highColor = "white";
         }
         else {
           myNS.lowColor = "white";
-          myNS.highColor = "red";
+          myNS.highColor = "#e91d0e";
         }
     }
     if (myNS.partyShow == "dem") {
         myNS.currSetCHL = myNS.optionsDemCHL[myNS.currKeyCHL];
         myNS.currSetBG = myNS.optionsDemBG[myNS.currKeyBG];
+	myNS.rectColor = "#00a6ef";
 	if (myNS.currKeyCHL == "Ad Tone") {
- 	  myNS.lowColor = "blue";
+ 	  myNS.lowColor = "#00a6ef";
 	  myNS.highColor = "white";
         }
         else {
 	  myNS.lowColor = "white";
-          myNS.highColor = "blue";
+          myNS.highColor = "#00a6ef";
 	}
     }
     if (myNS.partyShow == "both") {
 	myNS.currSetBG = myNS.optionsBG[myNS.currKeyBG];
 	myNS.currSetCHL = myNS.optionsCHL[myNS.currKeyCHL];
+	myNS.rectColor = "#c76706";
 	if (myNS.currKeyCHL == "Ad Tone") {
-          myNS.lowColor = "#c76706";
-          myNS.highColor = "white";
+            myNS.lowColor = "#c76706";
+            myNS.highColor = "white";
         }
         else if (myNS.currKeyCHL == "Distribution by Party") {
-	console.log("Asdf");
-          myNS.lowColor = "blue";
-          myNS.highColor = "red";
+	    myNS.rectColor = "purple";
+            myNS.lowColor = "#00a6ef";
+            myNS.highColor = "#e91d0e";
         }
         else {
-          myNS.lowColor = "white";
-          myNS.highColor = "#c76706";
+            myNS.lowColor = "white";
+            myNS.highColor = "#c76706";
         }
     }
 }
