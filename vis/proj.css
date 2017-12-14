@@ -1,6 +1,19 @@
+/*
+  Authors: Tom Lucy & Duncan Gans
+  Date: 12/15/17
+  
+  This is the CSS file for the data visualization page.
+
+  This link was used for the slider: https://www.w3schools.com/howto/howto_js_
+  rangeslider.asp
+
+  This link was used for the buttons: https://www.w3schools.com/howto/howto_cs
+  s_button_group.asp 
+
+*/
+
 body {
     font-family: georgia;
-    background-color: white;
 }
 
 a {
@@ -9,6 +22,7 @@ a {
     font-family: georgia;
 }
 
+/* style the navigation bar */
 ul {
     list-style-type: none;
     margin: 0;
@@ -30,20 +44,22 @@ li a {
     text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */                            
 li a:hover {
     background-color: #d3d3d3;
 }
 
+/* position the page title */
 #header {
     text-align: center;
 }
 
+/* style the axis labels for the SVG */
 text {
     font-family: georgia;
     fill: black;
 }
 
+/* style the axes for the bar graph */
 .x_axis {
     fill: white;
 }
@@ -52,6 +68,7 @@ text {
     fill: white;
 }
 
+/* position and style the slider and animation tools */
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
@@ -77,6 +94,7 @@ text {
     cursor: pointer; /* Cursor on hover */
 }
 
+/* stlye the buttons for changing parties */
 .button {
     background-color: maroon;
     border: 2px solid white;
@@ -97,6 +115,7 @@ text {
   color: maroon;
 }
 
+/* position the slider menu */
 .wrapper {
     position: absolute;
     left: 1%;
@@ -116,6 +135,7 @@ text {
     top:40px;
 }
 
+/* position the bar graph */
 #BG {
     position:absolute;
     top: 15%;
@@ -126,6 +146,7 @@ text {
     font-family: georgia;
 }
 
+/* position the chloropleth */
 #CHL {
     position: absolute;
     top: 15%;
@@ -136,6 +157,7 @@ text {
     text: georgia;
 }
 
+/* position the chloropleth dropdown */
 #controlsCHL {
     position:relative;
     float:left;
@@ -152,6 +174,7 @@ text {
     font-size: 12px;
 }
 
+/* position the bar graph dropdown */
 #controlsBG {
     position: relative;
     float: right;
@@ -168,6 +191,7 @@ text {
     font-size: 12px;
 }
 
+/* position the masthead on the bottom of the page */
 #masthead {
     position: absolute;
     text-align: center;
@@ -180,9 +204,10 @@ text {
     font-size: 10px;
 }
 
+/* position the description below the graphs and above the masthead */
 #info {
     position: absolute;
-    top: 610px;
+    top: 600px;
     color: black;
     z-index: 101;
     left: 25%;
@@ -192,10 +217,12 @@ text {
     font-size: 12px;
 }
 
+/* highlight the current selections in the description */
 span {
     color: #c76706;
 }
 
+/* color the party selection buttons */
 #democrat {
     background-color: #00a6ef;
 }

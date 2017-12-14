@@ -1,5 +1,14 @@
+/*
+  Authors: Tom Lucy & Duncan Gans
+  Date: 12/15/17
+  
+  This is the CSS file for the data description page.
+
+*/
+
+
+
 body {
-    background-color: white;
     font-family: georgia;
 }
 
@@ -9,6 +18,7 @@ a {
     font-family: georgia;
 }
 
+/* style and position the navigation bar */
 ul {
     list-style-type: none;
     margin: 0;
@@ -29,16 +39,17 @@ ul {
     padding:1px 16px;
     text-decoration: none;
 }
-
-/* Change the link color to #111 (black) on hover */                            
+ 
 li a:hover {
     background-color: #d3d3d3;
 }
 
+/* position the title */
 #header {
     text-align: center;
 }
 
+/* position the masthead at the bottom of the page */
 #masthead {
     position: absolute;
     top: 1150px;
@@ -51,6 +62,7 @@ li a:hover {
     font-size: 10px;
 }
 
+/* position the text of the page */
 #descrip {
     position: absolute;
     left: 12.5%;
