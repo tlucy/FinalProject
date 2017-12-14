@@ -1,3 +1,14 @@
+/*
+  Authors: Tom Lucy & Duncan
+  Date: 12/15/17
+
+  This is the CSS file for the home page.
+  
+  The Bar Graph and Chloropleth examples we used were from Murray's D3 
+  book.
+*/
+
+
 // namespace
 myNS = {};
 
@@ -108,9 +119,11 @@ myNS.currOptions;
 
 myNS.check = true;
 
+//Keeps track of current key for variable visibility
 myNS.currKeyCHL = "Ad Tone";
 myNS.currKeyBG = "Total Ads per Issue";
 
+//Keeps track of which party is being shown
 myNS.party = {
     "both": "both parties",
     "rep": "the Republican party",
@@ -132,7 +145,7 @@ function main () {
     buttonListener();
 }
 
-
+//This function makes the scales.
 function makeScales(value) {
     myNS.x = d3.scaleBand()
         .domain(d3.range(myNS.currSetBG.length))
@@ -145,18 +158,15 @@ function makeScales(value) {
         .range([myNS.hBG-myNS.p,myNS.p]);
 }
 
-
+//Makes the bar graph through helper functions
 function makeBG(value) {
-    //myns.svg2.remove();
-    //myns.svg1.remove();
     makeScales(value);
     makeAndLabelBars(value);
     makeAxes(value);
 }
 
-
+//Actually makes and labels the bars in the bar graph
 function makeAndLabelBars (value) {
-
     var barPadding = 1;     
     var labelyoffset = 0; 
     myNS.svg1.selectAll("rect.issue").remove();   
@@ -179,7 +189,7 @@ function makeAndLabelBars (value) {
 	.attr("fill", myNS.rectColor);
 }
 
-
+//Makes the axis for the bar graph
 function makeAxes () {
     myNS.svg1.selectAll("g").remove();
     var xAxis = 
@@ -206,7 +216,8 @@ function makeAxes () {
 	.call(yAxis);
 }
 
-
+//Makes an svg in the given id space, one for the BG, and one for the
+//chloropleth
 function makeSVG (id) {
 
     if (id == "BG") {
@@ -229,7 +240,7 @@ function makeSVG (id) {
     } 
 }
 
-
+//Makes the chloropleth with the helper function
 function makeCHL(value) {
     makeHelpers(value);
 
@@ -238,7 +249,7 @@ function makeCHL(value) {
     makeLegend();
 }
 
-
+//Makes the three pillars of the chloropleth, that it needs
 function makeHelpers(value) {
 
     myNS.projection = d3.geoAlbersUsa()
@@ -257,7 +268,8 @@ function makeHelpers(value) {
 	.range([myNS.lowColor, myNS.highColor]);
 }
 
-
+//Makes the legend for the chloropleth using a color scale, and the 
+//rect at the bottom of the map
 function makeLegend() {
 
     var newData = [];
@@ -304,9 +316,8 @@ function makeLegend() {
 	.style("font-size", "10px");
 }
 
-
+//Converts a month value into the dataset objects value for that month
 function getMonthVal(dataobject, month) {
-
     if (month == "value0") {return dataobject.value0;}
     if (month == "value1") {return dataobject.value1;}
     if (month == "value2") {return dataobject.value2;}
@@ -334,7 +345,8 @@ function getMonthVal(dataobject, month) {
     if (month == "value24") {return dataobject.value24;}
 }
 
-    
+//Makes and colors the chloropleth based on the values in the csv file
+//passed in earlier
 function makeMap(propertyName) {
     myNS.svg2.selectAll("path").remove();
     d3.json(myNS.json, function(json) {
@@ -371,7 +383,9 @@ function makeMap(propertyName) {
     });
 }
 
-
+//Changes the month using a timer and an interval to give the appearence
+//of a change of time. It uses the slider in the html to determine the 
+//current date, and will move the slider appropriately
 function animate() {
     d3.select("#animate")
 	.on("click", function() {
@@ -396,9 +410,8 @@ function animate() {
     );
 }
 
-
+//Gets the slider, and allows the value to be changed by slider moving
 function sliderDisplay() {
-
     var slider = document.getElementById("myRange");
     var date = d3.select("#date");
     makeBG("value" + slider.value);
@@ -410,6 +423,8 @@ function sliderDisplay() {
   }
 }
 
+//Sets the current colors and datasets based on what party is being
+//looked at as well as what variables are being looked at
 function setCurrs() {
 
     if (myNS.partyShow == "rep") {
@@ -458,7 +473,10 @@ function setCurrs() {
     }
 }
 
-
+//This function deals with reading the html select chunk and setting the
+//current variables to the right databases. It also determines what party
+//is being showed and colors things appropriately. Essentially, this 
+//function deals with updates to the interactivity
 function selection() {
 
     myNS.count = 1;
@@ -511,7 +529,7 @@ function selection() {
 
 }
 
-
+//Reads the rest of the data from the csvs and keeps track of things
 function readOtherData() {
    
     d3.csv("Party_Month.csv", function(error,  data) {
@@ -824,7 +842,8 @@ function readOtherData() {
 
 }
 
-
+//Loads all of the dataset options. This occurs after the datasets 
+//are loaded in, and they need to be partitioned into sections
 function loadOptions() {
 
     myNS.optionsCHL = {
@@ -872,7 +891,7 @@ function loadOptions() {
     myNS.check = false;
 }
 
-
+//Listens to the html party buttons to change what is being shown.
 function buttonListener() {
 
     d3.select("#both").on("click", function() {
@@ -913,7 +932,7 @@ function buttonListener() {
 
 }
 
-	   
+//Reads the first dataset and then calls the function to read in the rest
 d3.csv("Issues_Month.csv", function(error, data) {
     myNS.issuesMonth = data;
     if (error) {
