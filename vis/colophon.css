@@ -1,14 +1,27 @@
+/*
+  Authors: Tom Lucy & Duncan
+  Date: 12/15/17
+
+  This is the CSS file for the home page.
+
+  The Bar Graph and Chloropleth examples we used were from Murray's D3
+  book.
+*/
+
+//Body of the website
 body {
     background-color: white;
     font-family: georgia;
 }
 
+//Navigation elements
 a {
     color: white;
     font-size: 20px;
     font-family: georgia;
 }
 
+//Another element of the navbar
 .dad {
     list-style-type: none;
     margin: 0;
@@ -21,6 +34,7 @@ a {
 .drop {
     float: left;
 }
+//Aspect of the nav bar
 .drop a {
     display: block;
     color: black;
@@ -34,6 +48,7 @@ li a:hover {
     background-color: #d3d3d3;
 }
 
+//Masthead for every page, other description can be seen elsewhere
 #masthead {
     position: absolute;
     bottom: 0;
@@ -46,6 +61,7 @@ li a:hover {
     font-size: 10px;
 }
 
+//Style for text
 p {
     padding-left: 15px;
 }
