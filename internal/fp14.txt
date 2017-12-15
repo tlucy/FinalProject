@@ -1,0 +1,50 @@
+Duncan Gans, Tom Lucy
+fp123: Progress Report 4
+Interactive DAta Visualization
+12/15/2017
+
+Political Advertisements During the 2015-2016 Election Cycle
+FP14: Final Project Progress Report - 4
+
+GOALS:
+
+1: Get minimally functional version of webpage without interactivity
+  Create Website organization, and for our visualization, set up the layout
+  so that it looks good, and can be easily augmented with Javascript.
+2: Begin pre-processing data for time slider interactivity 
+  Preprocess data so that we have a matrix of state and month so that we can
+  visualize both at the same time. Initially, this will only focus on the 
+  positivity and negativity, and the relative issue frequency.
+3: Implement time interactivity 
+  Allow the user to scroll through the time series and have both of the 
+  visualizations update simultaneously. 
+4: Pre-process data for adding additional variable interactivity.
+  This will allow the opportunity for users to look at different variables in 
+  each of the different visualizations.
+5. Allow Interactivity to Change Variables
+  Add javascript so that users can select to look at different variables on 
+  both the chloropleth as well as the bar graph.
+6. (Stretch Goal) Allow user to only look at certain subsets of data
+  This involves preprocessing data, and creating interactivity to allow the 
+  user to look at only data from specific types of races, or for a certain
+  certain parties. 
+7: (Super Strech Goal) Have the visualization change depending data splices
+  This here would certainly be a stretch goal, but if we accomplish 6, we could
+  make it so the visualization colors, all around the webpage, would change
+  colors.
+8: Finalize interactivities and add small aesthetic touches
+  Finish Up interactivity and add css/javascript to make it look better
+9: Clean up and organize portfolio
+10: Create additional description webpages
+  For our other pages, such as the colophon, the desctiption of data, etc. 
+  write out and finish up those webpages so they are aesthetically appealing
+  and accurate.
+11: (Stretch Goal) Add relevant events to time slider
+  Allow Functionality so that when the Time Slider moves, users can see what 
+  happened that month, such as notable debates, conventions, and elections.
+
+Last week we were able to finish all the goals except 11, a stretch goal. This means also finishing stretch goal 6 and 7. We didn't make it possible to splice by race, but we could splice by party. We have now finished the project.
+
+
+Our contribution accounting can be found here:
+http://www.bowdoin.edu/~tlucy/csci3665/FinalProject/internal/contributions.html
